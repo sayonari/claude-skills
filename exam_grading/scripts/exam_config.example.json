@@ -1,0 +1,60 @@
+{
+  "_comment": "テストごとに書き換える設定ファイル。scripts/ と同じ階層に exam_config.json として置く。",
+
+  "course": "アルゴリズムとデータ構造",
+  "exam_name": "2026年度 期末テスト",
+  "exam_date": "2026-08-05",
+  "_full_marks_note": "この例は5小問のみ記載しているため full_marks=20。実際は全小問を items に書き、合計を満点に一致させること",
+  "full_marks": 20,
+
+  "paths": {
+    "_comment": "scripts/ からの相対パス",
+    "output": "../.output",
+    "pages": "../.output/採点/pages",
+    "crops": "../.output/採点/crops",
+    "batches": "../.output/採点/採点JSON",
+    "sheet_map": "../.output/採点/sheet_map.json",
+    "comments": "../.output/採点/comments_all.json",
+    "ai_replies": "../.output/採点/ai_replies.json",
+    "aggregate": "../.output/採点結果_集約.json"
+  },
+
+  "scan": {
+    "_comment": "冊ごとの答案枚数。片面一括スキャンでは表は正順・裏は逆順（表 i ↔ 裏 N+1-i）",
+    "books": { "1": 60, "2": 72 },
+    "dpi": 300,
+    "page_size_px": [2480, 3509]
+  },
+
+  "crop": {
+    "_comment": "300dpi の絶対ピクセル [left, top, right, bottom]。大問境界は上下に余白を持たせて重ねて切る",
+    "front": {
+      "id":  [0, 200, 2480, 430],
+      "q1":  [60, 340, 2480, 970],
+      "q2":  [60, 930, 2480, 1340],
+      "q3":  [60, 1320, 2480, 1900]
+    },
+    "back": {
+      "q3":  [60, 80, 2480, 1280],
+      "comment": [60, 2470, 2480, 3080],
+      "backid":  [60, 3060, 2440, 3400]
+    }
+  },
+
+  "items": {
+    "_comment": "小問ID -> {max: 配点, q: 属する大問, label: 内容}。合計が full_marks と一致すること",
+    "1a": { "max": 4, "q": "問1", "label": "チェイン法スロット表" },
+    "1b": { "max": 2, "q": "問1", "label": "α" },
+    "2a": { "max": 8, "q": "問2", "label": "オープンアドレス表" },
+    "2b": { "max": 2, "q": "問2", "label": "衝突回数" },
+    "3a": { "max": 4, "q": "問3", "label": "裏面の設問（例）" }
+  },
+
+  "annotate": {
+    "_comment": "赤入れスタンプの中心座標（大問ラベル行の右側の余白）。300dpi基準",
+    "front_marks": { "問1": [2050, 380], "問2": [2050, 985] },
+    "back_marks":  { "問3": [2050, 190] },
+    "total_pos": [2150, 250],
+    "font_path": "/System/Library/Fonts/Hiragino Sans GB.ttc"
+  }
+}
